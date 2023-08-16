@@ -1,0 +1,241 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "EmployeeTable" (
+	"EmployeeNumber"	INTEGER NOT NULL UNIQUE,
+	"Sex"	TEXT,
+	"Name"	TEXT,
+	"Last"	TEXT,
+	"Age"	INTEGER,
+	"Address"	TEXT,
+	"Social"	INTEGER,
+	"Animals"	INTEGER,
+	"Level"	TEXT,
+	PRIMARY KEY("EmployeeNumber")
+);
+CREATE TABLE IF NOT EXISTS "AdoptionTable" (
+	"Number"	INTEGER NOT NULL UNIQUE,
+	"Sex"	TEXT NOT NULL,
+	"Species"	TEXT NOT NULL,
+	"Breed"	TEXT NOT NULL,
+	"Age"	INTEGER NOT NULL,
+	"Name"	TEXT NOT NULL,
+	"Temper"	INTEGER,
+	"Adoptable"	INTEGER,
+	"Username"	TEXT,
+	FOREIGN KEY("Username") REFERENCES "EmployeeTable"("EmployeeNumber"),
+	PRIMARY KEY("Number")
+);
+CREATE TABLE IF NOT EXISTS "Credentials" (
+	"Username"	TEXT,
+	"Password"	TEXT,
+	"ID"	INTEGER,
+	FOREIGN KEY("Username") REFERENCES "EmployeeTable"("EmployeeNumber"),
+	PRIMARY KEY("Username")
+);
+CREATE TABLE IF NOT EXISTS "home" (
+	"number"	integer,
+	"sex"	text NOT NULL,
+	"species"	text NOT NULL,
+	"breed"	text NOT NULL,
+	PRIMARY KEY("number")
+);
+CREATE TABLE IF NOT EXISTS "LogTable" (
+	"LogID"	INTEGER NOT NULL,
+	"Time"	INTEGER NOT NULL,
+	"SQL"	TEXT
+);
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1110,'M','Arnold','Shortman',14,'Hillwood,NY',111000000,0,'vet');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1111,'M','Benny','Hana',50,'Unionville,NY',111000111,0,'vet');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1112,'M','Cassie','Cage',14,'Hillwood,NY',111000222,0,'vol');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1113,'M','Dick','Clarke',90,'Unionville,NY',111000333,0,'vet');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1114,'M','Emilio','Clarke',90,'Unionville,NY',111000444,0,'shelter');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1115,'M','Freddy','Mecury',20,'DeepJunction,NY',111000555,0,'vol');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1116,'F','Gina','TheG',32,'Brooklyn,NY',111000666,0,'shelter');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1117,'F','Hope','Less',22,'Restricted',111000777,0,'vol');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1118,'F','Ina','Garten',52,'Turkey,NY',111000888,0,'vet');
+INSERT INTO "EmployeeTable" ("EmployeeNumber","Sex","Name","Last","Age","Address","Social","Animals","Level") VALUES (1119,'F','Jenny','BoomBoom',38,'Brooklyn,NY',111000999,0,'shelter');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (116607,'F','Cat','Shorthair',1,'Rosemonde',2,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (117072,'M','Dog','Chihuahua',18,'Henry',3,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (120804,'M','Cat','Shorthair',10,'Kerk',4,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (125698,'F','Cat','Shorthair',19,'Dinah',5,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (126519,'M','Dog','Dachsund',2,'Quint',10,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (150786,'M','Dog','Dachsund',13,'Kristoffer',1,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (159355,'M','Dog','Terrier',16,'Rollins',3,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (166998,'M','Dog','Dachsund',14,'Greg',4,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (178455,'M','Dog','Terrier',16,'Cliff',1,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (181967,'M','Dog','Dachsund',6,'Ewen',3,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (182355,'F','Cat','Shorthair',9,'Dalila',8,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (182837,'F','Cat','Shorthair',17,'Carry',1,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (185235,'M','Dog','Dachsund',13,'Wernher',3,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (210035,'M','Dog','Terrier',16,'Markus',9,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (211116,'M','Dog','Dachsund',17,'Putnem',7,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (212089,'M','Cat','Shorthair',18,'Whittaker',7,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (238404,'M','Dog','Dachsund',10,'Wells',5,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (244586,'M','Dog','Terrier',7,'Federico',7,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (250138,'F','Cat','Bengal',15,'Micheline',10,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (257770,'M','Dog','Dachsund',9,'Meredeth',5,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (274171,'M','Cat','Shorthair',14,'Roy',8,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (282781,'F','Cat','Shorthair',15,'Regina',10,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (293598,'M','Dog','Dachsund',1,'Monroe',10,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (294284,'M','Dog','Chihuahua',13,'Paton',3,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (319057,'M','Dog','Dachsund',16,'Renato',6,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (320412,'F','Cat','Shorthair',9,'Bridgette',1,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (326283,'F','Cat','Shorthair',5,'Cyndy',3,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (332868,'F','Cat','Shorthair',7,'Marcellina',8,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (350594,'F','Cat','Shorthair',4,'Leslie',1,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (351608,'F','Cat','Shorthair',12,'Helga',9,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (361978,'F','Cat','Shorthair',12,'Diahann',1,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (363118,'F','Cat','Shorthair',5,'Reggi',3,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (371495,'F','Cat','Shorthair',3,'Amalle',2,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (378069,'F','Cat','MaineCoon',12,'Susannah',6,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (388408,'F','Cat','Sphynx',4,'Ellie',8,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (395107,'F','Cat','Shorthair',15,'Delphinia',5,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (398884,'F','Cat','Shorthair',17,'Deborah',2,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (400464,'M','Dog','Dachsund',19,'Trueman',8,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (410712,'M','Cat','Shorthair',8,'Art',5,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (413159,'M','Dog','Chihuahua',13,'Allie',7,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (415882,'F','Cat','Shorthair',18,'Cariotta',7,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (417468,'F','Cat','Shorthair',4,'Lorette',2,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (432574,'F','Bird','Condor',9,'Janessa',7,0,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (441054,'M','Dog','Dachsund',4,'Vladamir',5,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (451509,'F','Cat','Shorthair',4,'Tiffani',3,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (455668,'M','Dog','Chihuahua',11,'Chucho',8,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (464563,'F','Cat','Shorthair',6,'Vivia',4,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (482962,'M','Dog','Chihuahua',12,'Jory',10,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (486718,'M','Dog','Dachsund',10,'Moishe',4,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (496905,'M','Cat','Shorthair',17,'Hardy',8,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (502089,'F','Cat','Shorthair',10,'Happy',3,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (516057,'F','Cat','Shorthair',20,'Gabriell',8,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (552532,'F','Bird','Chicken',11,'Ilise',10,0,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (557958,'F','Bird','Crow',9,'Xenia',5,0,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (569858,'F','Cat','MaineCoon',13,'Dagmar',2,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (584570,'M','Dog','Dachsund',6,'Algernon',4,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (584940,'F','Cat','Shorthair',13,'Stacie',9,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (593092,'F','Cat','Shorthair',17,'Maryl',8,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (611459,'M','Dog','Terrier',3,'Nobie',3,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (631740,'M','Dog','Chihuahua',2,'Krispin',6,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (631861,'F','Cat','Shorthair',18,'Dyane',6,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (635520,'F','Bird','Parakeet',20,'Erin',5,0,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (657993,'F','Cat','MaineCoon',7,'Kalli',4,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (666476,'F','Cat','Shorthair',18,'Ammamaria',4,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (701415,'F','Cat','MaineCoon',19,'Kathlin',9,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (707153,'M','Dog','Dachsund',5,'Ara',5,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (711019,'F','Bird','Chicken',5,'Heda',8,0,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (725936,'M','Dog','Terrier',3,'Lamond',8,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (730119,'M','Dog','Terrier',16,'Shermy',7,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (735047,'M','Dog','Dachsund',8,'Rodolfo',8,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (737241,'F','Cat','Shorthair',14,'Sibyl',5,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (741961,'F','Bird','Parrot',5,'Carilyn',4,1,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (753544,'F','Cat','Bengal',1,'Kay',2,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (765666,'F','Cat','Bengal',15,'Latrena',10,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (766108,'M','Cat','Shorthair',13,'Danya',6,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (791112,'F','Cat','Shorthair',11,'Pauline',4,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (806086,'M','Cat','Shorthair',6,'Karim',1,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (824063,'M','Dog','Chihuahua',3,'Hugo',5,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (831381,'F','Bird','Parrot',5,'Jacintha',1,1,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (851828,'M','Dog','Chihuahua',15,'Bevin',2,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (852295,'M','Dog','Terrier',2,'Kalle',6,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (875683,'F','Cat','Shorthair',7,'Meredithe',4,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (879664,'F','Bird','Parakeet',15,'Debee',3,1,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (881245,'M','Dog','Dachsund',2,'Lancelot',4,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (889685,'F','Cat','Bengal',5,'Carine',5,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (894807,'M','Dog','Dachsund',5,'Immanuel',5,0,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (908093,'F','Cat','Shorthair',4,'Pennie',10,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (911595,'M','Dog','Chihuahua',11,'Hermann',1,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (914995,'F','Cat','Shorthair',10,'Salomi',9,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (923600,'F','Bird','Condor',10,'Elinore',1,1,'1118');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (924599,'M','Cat','Shorthair',16,'Aloin',6,0,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (925294,'M','Dog','Dachsund',14,'Bay',2,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (927873,'M','Dog','Terrier',19,'Barty',3,1,'1110');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (990038,'F','Cat','Shorthair',11,'Ebba',4,1,'1113');
+INSERT INTO "AdoptionTable" ("Number","Sex","Species","Breed","Age","Name","Temper","Adoptable","Username") VALUES (991087,'F','Bird','Crow',2,'Berna',3,1,'1111');
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1110','100',10);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1111','110',11);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1112','120',12);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1113','130',13);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1114','140',14);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1115','150',15);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1116','160',16);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1117','170',17);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1118','180',18);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('1119','190',19);
+INSERT INTO "Credentials" ("Username","Password","ID") VALUES ('111','111',111);
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (1110,'2022-12-08T18:14:43.632652800','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:14:54','User is INSERTING... 400/400/400/400/400/400/400/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:14:54',' User INSERTED: 400/400/400/400/400/400/400/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:15:10','User is DELETING... 400/400/400/400/400/400/400/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:15:10','User DELETED: 400/400/400/400/400/400/400/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (1119,'2022-12-08T18:16:35.179481100','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:17:34','User is INSERTING... 190329/Dog/Bully/8/Poncho/10/0/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:17:34',' User INSERTED: 190329/Dog/Bully/8/Poncho/10/0/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:19:28','User is DELETING... 190329/Dog/Bully/8/Poncho/10/0/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-08 23:19:28','User DELETED: 190329/Dog/Bully/8/Poncho/10/0/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (1119,'2022-12-09T23:08:40.010360900','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-10 04:08:49','User is INSERTING... 1/1/1/1/1/1/1');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-10 04:08:49',' User INSERTED: 1/1/1/1/1/1/1');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-10 04:09:03','User DELETED: 1/1/1/1/1/1/1');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-10 04:09:03','User is DELETING... 1/1/1/1/1/1/1/1113');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (1110,'2022-12-09T23:29:44.046759800','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:35:16.640891900','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:38:54.719971500','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:40:23.443447700','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:40:30.233783600','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (116607,'2022-12-10 04:40:53',' The user is UPDATING... 116607/Cat/Shorthair/9/Rosemonde/3/1');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES ('','2022-12-10 04:40:53','User has UPDATED: Cat/Shorthair/1/Rosemonde/2/1');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:42:19.863971400','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:43:11.880981400','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:44:04.840337800','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:44:44.932249100','User Login');
+INSERT INTO "LogTable" ("LogID","Time","SQL") VALUES (111,'2022-12-09T23:48:12.668380500','User Login');
+CREATE TRIGGER deletelogBEF
+AFTER DELETE ON AdoptionTable
+BEGIN
+	Insert into LogTable(LogID, time, sql) 
+	values("", datetime('now'), "User is DELETING... " || OLD.number || '/' || OLD.species || '/' || OLD.breed || '/' || OLD.age || '/' || OLD.name || '/' || OLD.temper ||
+	'/' || OLD.adoptable || '/' || OLD.username );
+END;
+CREATE TRIGGER addlogAFT
+AFTER INSERT ON AdoptionTable
+BEGIN
+	Insert into LogTable(LogID, time, sql) 
+	values("", datetime('now')," User INSERTED: " || NEW.number || '/' || NEW.species || '/' || NEW.breed || '/' || NEW.age || '/' || NEW.name || '/' || NEW.temper ||
+	'/' || NEW.adoptable);
+END;
+CREATE TRIGGER addlogBEF
+BEFORE INSERT ON AdoptionTable
+BEGIN
+	Insert into LogTable(LogID, time, sql) 
+	values("", datetime('now'), "User is INSERTING... " || NEW.number || '/' || NEW.species || '/' || NEW.breed || '/' || NEW.age || '/' || NEW.name || '/' || NEW.temper ||
+	'/' || NEW.adoptable);
+END;
+CREATE TRIGGER updatelogBEF
+BEFORE UPDATE ON AdoptionTable
+BEGIN
+	Insert into LogTable(LogID, time, sql) 
+	values(OLD.number, datetime('now'), " The user is UPDATING... " || OLD.number || '/' || OLD.species || '/' || OLD.breed || '/' || OLD.age || '/' || OLD.name || '/' || OLD.temper ||
+	'/' || OLD.adoptable);
+END;
+CREATE TRIGGER updatelogAFT
+AFTER UPDATE ON AdoptionTable
+BEGIN
+	Insert into LogTable(LogID, time, sql) 
+	values("", datetime('now'), "User has UPDATED: " || NEW.species || '/' || NEW.breed || '/' || NEW.age || '/' || NEW.name || '/' || NEW.temper ||
+	'/' || NEW.adoptable);
+END;
+CREATE TRIGGER deletelogAFT
+AFTER DELETE ON AdoptionTable
+BEGIN
+	Insert into LogTable(LogID, time, sql) 
+	values("", datetime('now'), "User DELETED: " || OLD.number || '/' || OLD.species || '/' || OLD.breed || '/' || OLD.age || '/' || OLD.name || '/' || OLD.temper ||
+	'/' || OLD.adoptable);
+END;
+CREATE TRIGGER validlog
+   BEFORE INSERT ON AdoptionTable
+BEGIN
+   SELECT
+      CASE
+        WHEN NEW.Username NOT LIKE '%1__%.__%'     THEN   RAISE (ABORT,'Invalid Username need to start with 1')
+        WHEN NOT typeof(NEW.number) = 'integer'  THEN   RAISE (ABORT,'Invalid number')
+    END;       
+       
+END;
+COMMIT;
